@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n %} {% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card feature-card">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">{% trans "Sign In" %}</h2>
+
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary mt-3" type="submit">{% trans "Sign In" %}</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a class="text-muted" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                    </div>
+                    <div class="border-top pt-3 mt-3">
+                        <small class="text-muted">
+                            Não tem uma conta? <a class="ms-2" href="{% url 'account_signup' %}">Cadastre-se</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
