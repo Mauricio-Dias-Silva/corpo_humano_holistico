@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # Não é necessário sem o allauth
+    'django.contrib.sites', 
 ]
 
 # Middleware
@@ -84,6 +84,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'corpo_humano_holistico.wsgi.application'
 
+SITE_ID = 1
+
 # Banco de Dados
 DATABASES = {
     'default': {
@@ -117,7 +119,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Chave da API do Google AI para a Aura
-GEMINI_API_KEY = "SUA_CHAVE_API_AQUI" # Lembre-se de colocar sua chave aqui
+GEMINI_API_KEY = "AIzaSyCkMeyZYwxCSyFTuJs6h67wAzHt8fNo0QE" # Lembre-se de colocar sua chave aqui
 
 # Redirecionamentos de Login e Logout para o nosso sistema
 LOGIN_REDIRECT_URL = 'dashboard' 
