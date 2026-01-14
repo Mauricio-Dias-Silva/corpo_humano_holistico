@@ -1,0 +1,573 @@
+{% extends 'base.html' %}
+{% block title %}Holograma Bio-Quântico 3D{% endblock %}
+
+{% block content %}
+<!-- Three.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<!-- Post Processing -->
+<script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+<div id="canvas-container" class="fixed inset-0 bg-black overflow-hidden transform pt-16">
+    <!-- UI Overlay (HUD) -->
+    <div class="absolute top-20 left-10 text-cyan-500 font-mono z-10 pointer-events-none">
+        <h1
+            class="text-4xl font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 animate-pulse">
+            HOLOSCAN v5.0</h1>
+        <p class="text-xs mt-2 opacity-70">SISTEMA BIO-QUÂNTICO • KENHUB CERTIFIED</p>
+        <p class="text-xs opacity-50">STATUS: MEGA BRAIN + GHOST STATION ONLINE</p>
+        <div class="mt-4 border-l-2 border-cyan-500 pl-4">
+            <p class="text-[10px]">🎮 DRAG: Rotate Body</p>
+            <p class="text-[10px]">🔍 SCROLL: Zoom In/Out</p>
+            <p class="text-[10px]">👆 CLICK ORGAN: Deep Scan</p>
+        </div>
+    </div>
+
+    <!-- Stats Panel (Top Right) -->
+    <div class="absolute top-20 right-10 text-right text-cyan-500 font-mono z-10 pointer-events-none">
+        <p class="text-xs opacity-70">ORGANS MAPPED: <span class="text-white">15</span></p>
+        <p class="text-xs opacity-70">CHAKRAS ACTIVE: <span class="text-green-400">7/7</span></p>
+        <p class="text-xs opacity-70">ENERGY FLOW: <span class="text-yellow-400">OPTIMAL</span></p>
+    </div>
+
+    <!-- Loading -->
+    <div id="loading" class="absolute inset-0 flex flex-col items-center justify-center text-cyan-500 z-50 bg-black">
+        <div class="text-3xl animate-pulse mb-4">Inicializando Matriz Holográfica...</div>
+        <div class="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-cyan-500 to-purple-500 animate-pulse" style="width: 100%"></div>
+        </div>
+    </div>
+
+    <!-- Data Panel (Hidden) -->
+    <div id="data-panel"
+        class="absolute bottom-10 right-10 w-[420px] bg-black/90 backdrop-blur-xl border border-cyan-500/50 p-6 rounded-2xl transform translate-x-full transition-all duration-500 opacity-0 z-20 shadow-[0_0_80px_rgba(0,255,255,0.3)]">
+        <div class="flex items-center justify-between mb-2">
+            <h2 id="panel-title" class="text-3xl font-bold text-white">...</h2>
+            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-full">SCANNING</span>
+        </div>
+        <h3 id="panel-sub" class="text-cyan-400 uppercase tracking-widest text-xs mb-4">...</h3>
+        <p id="panel-desc" class="text-gray-300 text-sm leading-relaxed border-t border-cyan-900/50 pt-4">...</p>
+
+        <!-- Medical Data Section -->
+        <div id="panel-medical" class="mt-4 p-3 bg-gray-900/50 rounded-lg hidden">
+            <p class="text-xs text-gray-500 uppercase mb-2">📋 Dados Técnicos (Kenhub)</p>
+            <p id="panel-origin" class="text-xs text-gray-400"></p>
+            <p id="panel-insertion" class="text-xs text-gray-400"></p>
+            <p id="panel-nerve" class="text-xs text-gray-400"></p>
+        </div>
+
+        <!-- PubMed Studies Section -->
+        <div id="panel-pubmed" class="mt-4 p-3 bg-green-900/30 border border-green-500/30 rounded-lg hidden">
+            <p class="text-xs text-green-400 uppercase mb-2">🔬 Estudos Científicos (PubMed)</p>
+            <div id="pubmed-loading" class="text-xs text-gray-400 animate-pulse">Buscando estudos...</div>
+            <div id="pubmed-results" class="space-y-2"></div>
+        </div>
+
+        <button onclick="closePanel()"
+            class="mt-4 text-xs text-cyan-500 hover:text-white uppercase tracking-widest w-full text-right transition-colors">
+            Encerrar Escaneamento [X]
+        </button>
+    </div>
+</div>
+
+<script>
+    // === CONFIGURATION ===
+    const SCENE_CONFIG = {
+        color: 0x050510,
+        bloomStrength: 1.5,
+        bloomRadius: 0.4,
+        bloomThreshold: 0.2
+    };
+
+    // === THREE.JS SETUP ===
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(SCENE_CONFIG.color);
+    scene.fog = new THREE.FogExp2(0x050510, 0.015);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 12, 35);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    container.appendChild(renderer.domElement);
+
+    // === POST PROCESSING (BLOOM) ===
+    const composer = new THREE.EffectComposer(renderer);
+    const renderPass = new THREE.RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    const bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        SCENE_CONFIG.bloomStrength,
+        SCENE_CONFIG.bloomRadius,
+        SCENE_CONFIG.bloomThreshold
+    );
+    composer.addPass(bloomPass);
+
+    // Controls
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxPolarAngle = Math.PI / 1.3;
+    controls.minDistance = 15;
+    controls.maxDistance = 50;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
+
+    // === LIGHTING ===
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+    scene.add(ambientLight);
+
+    const mainLight = new THREE.PointLight(0x00ffff, 3, 80);
+    mainLight.position.set(15, 25, 15);
+    scene.add(mainLight);
+
+    const purpleLight = new THREE.PointLight(0xff00ff, 2, 60);
+    purpleLight.position.set(-15, 15, -15);
+    scene.add(purpleLight);
+
+    const goldLight = new THREE.PointLight(0xffaa00, 1.5, 40);
+    goldLight.position.set(0, -10, 20);
+    scene.add(goldLight);
+
+    // === PROCEDURAL HUMAN BODY (Enhanced) ===
+    const bodyGroup = new THREE.Group();
+    scene.add(bodyGroup);
+
+    // Material for the "Energy Skin"
+    const skinMaterial = new THREE.MeshPhongMaterial({
+        color: 0x0066cc,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.08,
+        side: THREE.DoubleSide
+    });
+
+    // Material for "Cyber Skeleton"
+    const boneMaterial = new THREE.MeshBasicMaterial({
+        color: 0x00ffff,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.2
+    });
+
+    // 1. Torso
+    const torsoGeo = new THREE.CylinderGeometry(4, 3.5, 14, 24, 6, true);
+    const torso = new THREE.Mesh(torsoGeo, skinMaterial);
+    torso.position.y = 10;
+    bodyGroup.add(torso);
+
+    // Spine
+    const spineGeo = new THREE.CylinderGeometry(0.4, 0.4, 16, 12);
+    const spine = new THREE.Mesh(spineGeo, boneMaterial);
+    spine.position.y = 10;
+    bodyGroup.add(spine);
+
+    // Rib Cage (Schematic)
+    for (let i = 0; i < 6; i++) {
+        const ribGeo = new THREE.TorusGeometry(3 - (i * 0.2), 0.08, 8, 32, Math.PI);
+        const rib = new THREE.Mesh(ribGeo, boneMaterial);
+        rib.position.y = 14 - (i * 1.2);
+        rib.rotation.x = Math.PI / 2;
+        bodyGroup.add(rib);
+    }
+
+    // 2. Head
+    const headGeo = new THREE.IcosahedronGeometry(2.8, 2);
+    const head = new THREE.Mesh(headGeo, skinMaterial);
+    head.position.y = 20;
+    bodyGroup.add(head);
+
+    // 3. Arms
+    const armGeo = new THREE.CylinderGeometry(0.7, 0.5, 13, 12);
+    const leftArm = new THREE.Mesh(armGeo, skinMaterial);
+    leftArm.position.set(6, 10.5, 0);
+    leftArm.rotation.z = Math.PI / 7;
+    bodyGroup.add(leftArm);
+
+    const rightArm = leftArm.clone();
+    rightArm.position.set(-6, 10.5, 0);
+    rightArm.rotation.z = -Math.PI / 7;
+    bodyGroup.add(rightArm);
+
+    // 4. Legs
+    const legGeo = new THREE.CylinderGeometry(1.1, 0.7, 17, 12);
+    const leftLeg = new THREE.Mesh(legGeo, skinMaterial);
+    leftLeg.position.set(2, -6, 0);
+    bodyGroup.add(leftLeg);
+
+    const rightLeg = leftLeg.clone();
+    rightLeg.position.set(-2, -6, 0);
+    bodyGroup.add(rightLeg);
+
+    // === ORGANS (INTERACTIVE - EXPANDED) ===
+    const organs = [];
+
+    function createOrgan(name, geo, color, position, data) {
+        const material = new THREE.MeshPhongMaterial({
+            color: color,
+            emissive: color,
+            emissiveIntensity: 0.6,
+            shininess: 120,
+            transparent: true,
+            opacity: 0.95
+        });
+
+        const mesh = new THREE.Mesh(geo, material);
+        mesh.position.copy(position);
+        mesh.userData = { isOrgan: true, name: name, data: data };
+
+        // Glow Shell
+        const shell = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+            color: color, wireframe: true, transparent: true, opacity: 0.4
+        }));
+        shell.scale.set(1.3, 1.3, 1.3);
+        mesh.add(shell);
+
+        bodyGroup.add(mesh);
+        organs.push(mesh);
+        return mesh;
+    }
+
+    // -- BRAIN --
+    createOrgan("Cérebro", new THREE.IcosahedronGeometry(2, 2), 0xff00ff, new THREE.Vector3(0, 20, 0), {
+        sub: "Processador Central Quântico",
+        desc: "100 bilhões de neurônios. Gerencia toda percepção, pensamento e consciência. Chakra Coroa (Sahasrara).",
+        medical: { origem: "Tubo Neural", insercao: "N/A", inervacao: "12 Pares Cranianos" }
+    });
+
+    // -- HEART --
+    createOrgan("Coração", new THREE.OctahedronGeometry(1.6, 2), 0xff0044, new THREE.Vector3(0.8, 12.5, 1.5), {
+        sub: "Gerador Eletromagnético Toroidal",
+        desc: "Campo magnético 5000x mais forte que o cérebro. Centro do amor incondicional. Chakra Cardíaco (Anahata).",
+        medical: { origem: "Mesoderma", insercao: "Pericárdio", inervacao: "N. Vago + Simpático" }
+    });
+
+    // -- LUNGS --
+    const lungGeo = new THREE.DodecahedronGeometry(1.8, 1);
+    createOrgan("Pulmão Direito", lungGeo, 0xff8888, new THREE.Vector3(-2.5, 13.5, 0.5), {
+        sub: "Filtro de Ar (3 Lobos)",
+        desc: "Processa oxigênio e libera CO2. Armazena tristeza e luto não processados. Elemento: Metal (MTC).",
+        medical: { origem: "Endoderma", insercao: "Pleura", inervacao: "N. Frênico + Vago" }
+    });
+    createOrgan("Pulmão Esquerdo", lungGeo, 0xff8888, new THREE.Vector3(2.5, 13.5, 0.5), {
+        sub: "Filtro de Ar (2 Lobos)",
+        desc: "Ligado ao luto e à capacidade de 'soltar'. Respiração superficial = medo de viver.",
+        medical: { origem: "Endoderma", insercao: "Pleura", inervacao: "N. Frênico + Vago" }
+    });
+
+    // -- LIVER --
+    createOrgan("Fígado", new THREE.TetrahedronGeometry(2.2, 2), 0xcc6600, new THREE.Vector3(-2, 9, 1.5), {
+        sub: "O General / Detox Master",
+        desc: "500+ funções. Processa raiva, frustração e planejamento. Ativo entre 1h-3h (sono REM). Elemento: Madeira.",
+        medical: { origem: "Endoderma", insercao: "Ligamentos Hepáticos", inervacao: "Plexo Hepático" }
+    });
+
+    // -- STOMACH --
+    createOrgan("Estômago", new THREE.SphereGeometry(1.5, 20, 20), 0xffcc88, new THREE.Vector3(1.8, 9, 1.5), {
+        sub: "Forno Digestivo",
+        desc: "Digere não só comida, mas IDEIAS. Ansiedade causa 'queimação'. Chakra Plexo Solar (Manipura).",
+        medical: { origem: "Endoderma", insercao: "Cárdia/Piloro", inervacao: "N. Vago" }
+    });
+
+    // -- KIDNEYS --
+    const kidneyGeo = new THREE.DodecahedronGeometry(1, 1);
+    createOrgan("Rim Direito", kidneyGeo, 0x0066ff, new THREE.Vector3(-1.8, 8, -1.5), {
+        sub: "Bateria Ancestral",
+        desc: "Armazena o JING (essência vital). Medo crônico esgota os rins. Elemento: Água (MTC).",
+        medical: { origem: "Mesoderma", insercao: "Fáscia Renal", inervacao: "Plexo Renal" }
+    });
+    createOrgan("Rim Esquerdo", kidneyGeo, 0x0066ff, new THREE.Vector3(1.8, 8, -1.5), {
+        sub: "Bateria Ancestral",
+        desc: "Controla ossos, cabelos e audição (MTC). Rege a vontade e determinação.",
+        medical: { origem: "Mesoderma", insercao: "Fáscia Renal", inervacao: "Plexo Renal" }
+    });
+
+    // -- PANCREAS --
+    createOrgan("Pâncreas", new THREE.CylinderGeometry(0.4, 0.3, 3, 12), 0xffee00, new THREE.Vector3(0, 8.5, 0), {
+        sub: "Regulador Glicêmico",
+        desc: "Produz insulina. Ligado à 'doçura' da vida. Diabetes = amargura reprimida.",
+        medical: { origem: "Endoderma", insercao: "Duodeno", inervacao: "Plexo Celíaco" }
+    });
+
+    // -- SPLEEN --
+    createOrgan("Baço", new THREE.IcosahedronGeometry(1.2, 1), 0x9900ff, new THREE.Vector3(2.8, 8, 0), {
+        sub: "Reciclador de Sangue",
+        desc: "Filtra células velhas. Ligado à preocupação excessiva e ruminação mental. Elemento: Terra.",
+        medical: { origem: "Mesoderma", insercao: "Ligamentos Esplênicos", inervacao: "Plexo Celíaco" }
+    });
+
+    // -- BLADDER --
+    createOrgan("Bexiga", new THREE.SphereGeometry(0.9, 16, 16), 0x00aaff, new THREE.Vector3(0, 4, 1.5), {
+        sub: "Reservatório",
+        desc: "Armazena 'águas' para liberação. Medo e ansiedade causam urgência urinária. Chakra Sacral.",
+        medical: { origem: "Endoderma", insercao: "Uretra", inervacao: "Plexo Hipogástrico" }
+    });
+
+    // -- INTESTINES (Simplified) --
+    createOrgan("Intestino Delgado", new THREE.TorusKnotGeometry(1.2, 0.3, 64, 8, 2, 3), 0xff6688, new THREE.Vector3(0, 6, 0.5), {
+        sub: "Absorvedor Nutricional (7m)",
+        desc: "Separa o 'puro do impuro'. Ligado a decisões e discernimento. Ativo 13h-15h.",
+        medical: { origem: "Endoderma", insercao: "Jejuno/Íleo", inervacao: "Plexo Mesentérico" }
+    });
+
+    // -- THYROID --
+    createOrgan("Tireoide", new THREE.TorusGeometry(0.6, 0.2, 8, 24), 0x00ffaa, new THREE.Vector3(0, 17.5, 1), {
+        sub: "Termostato Metabólico",
+        desc: "Controla metabolismo e energia. Chakra Garganta (Vishuddha). Bloqueios = palavras não ditas.",
+        medical: { origem: "Endoderma", insercao: "Traqueia", inervacao: "N. Vago + Laríngeo" }
+    });
+
+    // -- PINEAL --
+    createOrgan("Pineal", new THREE.ConeGeometry(0.4, 0.8, 12), 0xaa00ff, new THREE.Vector3(0, 19, -0.5), {
+        sub: "Terceiro Olho / Antena Cósmica",
+        desc: "Produz Melatonina e DMT. Cristais piezoelétricos. Portal para estados expandidos de consciência.",
+        medical: { origem: "Ectoderma", insercao: "Epitálamo", inervacao: "Fibras Simpáticas" }
+    });
+
+    // === CHAKRAS (Energy Column) ===
+    const chakraNames = ["Raiz", "Sacral", "Plexo Solar", "Coração", "Garganta", "3º Olho", "Coroa"];
+    const chakraColors = [0xff0000, 0xff6600, 0xffff00, 0x00ff00, 0x00ffff, 0x0000ff, 0xaa00ff];
+
+    for (let i = 0; i < 7; i++) {
+        const chakra = new THREE.Mesh(
+            new THREE.TorusGeometry(0.6 + (i * 0.08), 0.06, 8, 48),
+            new THREE.MeshBasicMaterial({ color: chakraColors[i], transparent: true, opacity: 0.9 })
+        );
+        chakra.rotation.x = Math.PI / 2;
+        chakra.position.y = 4 + (i * 2.4);
+        chakra.position.z = 0.2;
+        chakra.userData = { spinSpeed: 0.03 + (i * 0.008), name: `Chakra ${chakraNames[i]}` };
+        bodyGroup.add(chakra);
+        organs.push(chakra);
+    }
+
+    // === ENERGY LINES (Meridians) ===
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 0.3 });
+    for (let i = 0; i < 12; i++) {
+        const points = [];
+        const angle = (i / 12) * Math.PI * 2;
+        for (let j = 0; j < 20; j++) {
+            points.push(new THREE.Vector3(
+                Math.cos(angle) * (3 + Math.sin(j * 0.5) * 0.5),
+                -10 + j * 1.5,
+                Math.sin(angle) * (3 + Math.sin(j * 0.5) * 0.5)
+            ));
+        }
+        const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+        const line = new THREE.Line(lineGeo, lineMaterial);
+        bodyGroup.add(line);
+    }
+
+    // === PARTICLES (Cosmic Field) ===
+    const particlesGeo = new THREE.BufferGeometry();
+    const particleCount = 3000;
+    const posArray = new Float32Array(particleCount * 3);
+    const colorArray = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i++) {
+        posArray[i * 3] = (Math.random() - 0.5) * 60;
+        posArray[i * 3 + 1] = (Math.random() - 0.5) * 60;
+        posArray[i * 3 + 2] = (Math.random() - 0.5) * 60;
+
+        // Gradient colors
+        colorArray[i * 3] = Math.random() * 0.5;
+        colorArray[i * 3 + 1] = Math.random() * 0.5 + 0.5;
+        colorArray[i * 3 + 2] = 1;
+    }
+
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const particlesMat = new THREE.PointsMaterial({
+        size: 0.08,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.6
+    });
+    const starField = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(starField);
+
+    // === INTERACTION ===
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    window.addEventListener('click', onMouseClick, false);
+    window.addEventListener('mousemove', onMouseMove, false);
+
+    let hoveredOrgan = null;
+
+    function onMouseMove(event) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -((event.clientY - 64) / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(organs);
+
+        if (intersects.length > 0 && intersects[0].object.userData.isOrgan) {
+            document.body.style.cursor = 'pointer';
+            if (hoveredOrgan !== intersects[0].object) {
+                if (hoveredOrgan) hoveredOrgan.scale.set(1, 1, 1);
+                hoveredOrgan = intersects[0].object;
+                hoveredOrgan.scale.set(1.15, 1.15, 1.15);
+            }
+        } else {
+            document.body.style.cursor = 'default';
+            if (hoveredOrgan) {
+                hoveredOrgan.scale.set(1, 1, 1);
+                hoveredOrgan = null;
+            }
+        }
+    }
+
+    function onMouseClick(event) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -((event.clientY - 64) / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(organs);
+
+        if (intersects.length > 0) {
+            const obj = intersects[0].object;
+            if (obj.userData.isOrgan) {
+                controls.autoRotate = false;
+                select3DOrgan(obj);
+            }
+        }
+    }
+
+    function select3DOrgan(obj) {
+        const data = obj.userData.data;
+        const panel = document.getElementById('data-panel');
+        const organName = obj.userData.name;
+
+        document.getElementById('panel-title').innerText = organName;
+        document.getElementById('panel-sub').innerText = data.sub;
+        document.getElementById('panel-desc').innerText = data.desc;
+
+        // Show medical data if available
+        const medicalPanel = document.getElementById('panel-medical');
+        if (data.medical) {
+            medicalPanel.classList.remove('hidden');
+            document.getElementById('panel-origin').innerText = `📍 Origem: ${data.medical.origem}`;
+            document.getElementById('panel-insertion').innerText = `🎯 Inserção: ${data.medical.insercao}`;
+            document.getElementById('panel-nerve').innerText = `⚡ Inervação: ${data.medical.inervacao}`;
+        } else {
+            medicalPanel.classList.add('hidden');
+        }
+
+        // === PUBMED INTEGRATION ===
+        const pubmedPanel = document.getElementById('panel-pubmed');
+        const pubmedLoading = document.getElementById('pubmed-loading');
+        const pubmedResults = document.getElementById('pubmed-results');
+
+        pubmedPanel.classList.remove('hidden');
+        pubmedLoading.classList.remove('hidden');
+        pubmedResults.innerHTML = '';
+
+        // Translate organ name to English for better PubMed results
+        const translations = {
+            'Cérebro': 'brain neuroscience',
+            'Coração': 'heart cardiology',
+            'Pulmão Direito': 'lung pulmonology',
+            'Pulmão Esquerdo': 'lung pulmonology',
+            'Fígado': 'liver hepatology',
+            'Estômago': 'stomach gastroenterology',
+            'Rim Direito': 'kidney nephrology',
+            'Rim Esquerdo': 'kidney nephrology',
+            'Pâncreas': 'pancreas diabetes',
+            'Baço': 'spleen immunology',
+            'Bexiga': 'bladder urology',
+            'Intestino Delgado': 'small intestine digestion',
+            'Tireoide': 'thyroid endocrinology',
+            'Pineal': 'pineal gland melatonin'
+        };
+
+        const searchTerm = translations[organName] || organName;
+
+        fetch(`/api/pubmed/?q=${encodeURIComponent(searchTerm)}`)
+            .then(response => response.json())
+            .then(data => {
+                pubmedLoading.classList.add('hidden');
+                if (data.studies && data.studies.length > 0) {
+                    data.studies.forEach(study => {
+                        const div = document.createElement('div');
+                        div.className = 'text-xs border-l-2 border-green-500 pl-2 py-1';
+                        div.innerHTML = `
+                            <a href="${study.link}" target="_blank" class="text-green-300 hover:text-white transition-colors">
+                                ${study.title.substring(0, 80)}...
+                            </a>
+                            <p class="text-gray-500 text-[10px]">${study.authors} • ${study.journal} (${study.year})</p>
+                        `;
+                        pubmedResults.appendChild(div);
+                    });
+                } else {
+                    pubmedResults.innerHTML = '<p class="text-gray-500 text-xs">Nenhum estudo encontrado.</p>';
+                }
+            })
+            .catch(err => {
+                pubmedLoading.classList.add('hidden');
+                pubmedResults.innerHTML = '<p class="text-red-400 text-xs">Erro ao conectar com PubMed.</p>';
+            });
+
+        panel.classList.remove('translate-x-full', 'opacity-0');
+    }
+
+    // === ANIMATION LOOP ===
+    document.getElementById('loading').style.display = 'none';
+
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+        const time = clock.getElapsedTime();
+
+        controls.update();
+
+        // Floating Organ Animation
+        organs.forEach((obj, idx) => {
+            if (obj.userData.isOrgan) {
+                obj.position.y += Math.sin(time * 1.5 + idx * 0.5) * 0.003;
+                obj.rotation.y += 0.008;
+            } else if (obj.userData.spinSpeed) {
+                obj.rotation.z -= obj.userData.spinSpeed;
+            }
+        });
+
+        // Light animation
+        mainLight.position.x = Math.sin(time * 0.3) * 20;
+        mainLight.position.z = Math.cos(time * 0.3) * 20;
+
+        // Particles rotation
+        starField.rotation.y = time * 0.02;
+        starField.rotation.x = Math.sin(time * 0.1) * 0.1;
+
+        // Render with bloom
+        composer.render();
+    }
+
+    animate();
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function closePanel() {
+        document.getElementById('data-panel').classList.add('translate-x-full', 'opacity-0');
+        controls.autoRotate = true;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero-section text-center">
+  <div class="container">
+    {% if user.is_authenticated and aura_greeting %}
+    <div class="card text-bg-primary bg-gradient mb-5 shadow-lg col-md-8 mx-auto">
+        <div class="card-body p-4">
+            <h5 class="card-title">Uma mensagem da Aura para você, {{ user.username }}:</h5>
+            <p class="card-text mb-0">"{{ aura_greeting|linebreaksbr }}"</p>
+        </div>
+    </div>
+    {% endif %}
+
+    <h1 class="display-4">DECODIFIQUE-SE.</h1>
+    <p class="lead col-md-8 mx-auto text-muted">Uma jornada de autoconhecimento guiada por dados, alimentada pela sua intuição e impulsionada por inteligência artificial.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
+        <a href="#" class="btn btn-secondary btn-lg px-4 gap-3">Inicie sua Jornada</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -7,12 +7,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Chave Secreta
-SECRET_KEY = 'django-insecure-#=q07^$ia8+u%gd(p-cp)#yq%8irgk33d_f9^80wkevwf1rxtm'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-#=q07^$ia8+u%gd(p-cp)#yq%8irgk33d_f9^80wkevwf1rxtm')
 
 # Modo Debug
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Aplicações Instaladas (Ordem Correta)
 INSTALLED_APPS = [
@@ -20,19 +20,9 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'usuarios.apps.UsuariosConfig',
     'anatomia.apps.AnatomiaConfig',
-    'sistema_osseo',
-    'sistema_muscular',
-    'sistema_nervoso',
-    'sistema_cardiovascular',
-    'sistema_respiratorio',
-    'sistema_digestivo',
-    'sistema_urinario',
-    'sistema_endocrino',
-    'sistema_tegumentar',
-    'sistema_reprodutor',
-    'sistema_hematopoietico',
-    'sistema_circulatorio',
-    'sistema_immune',
+    'pacientes', # TURBO MODE: Personal Twin
+    
+    # Apps Nucleares
     'metabolismo',
     'psicologia',
     'simbologia',
@@ -119,7 +109,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Chave da API do Google AI para a Aura
-GEMINI_API_KEY = "AIzaSyCkMeyZYwxCSyFTuJs6h67wAzHt8fNo0QE" # Lembre-se de colocar sua chave aqui
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyCkMeyZYwxCSyFTuJs6h67wAzHt8fNo0QE")
 
 # Redirecionamentos de Login e Logout para o nosso sistema
 LOGIN_REDIRECT_URL = 'dashboard' 

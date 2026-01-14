@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}Galáxia Corporal Completa{% endblock %}
+
+{% block content %}
+<div class="fixed inset-0 z-50 bg-[#0f1014] text-white flex">
+    <!-- Main Graph Area -->
+    <div class="flex-grow relative h-full">
+        <!-- Header Overlay -->
+        <div
+            class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-50 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+            <div class="pointer-events-auto">
+                <h1
+                    class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                    🌌 Galáxia Neuronal
+                </h1>
+                <p class="text-xs text-white/50">Clique nos nós para ver detalhes. Arraste para explorar.</p>
+            </div>
+            <a href="/"
+                class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition text-sm pointer-events-auto backdrop-blur-md">
+                Voltar ao Dashboard
+            </a>
+        </div>
+
+        <!-- The Network Graph -->
+        <div id="mynetwork" class="w-full h-full cursor-move"></div>
+    </div>
+
+    <!-- Sidebar (Info Panel) -->
+    <div id="info-panel"
+        class="w-80 h-full bg-black/40 backdrop-blur-xl border-l border-white/10 p-6 transform translate-x-full transition-transform duration-300 absolute right-0 top-0 overflow-y-auto">
+        <div class="flex justify-between items-start mb-6">
+            <h2 id="node-label" class="text-2xl font-bold text-white">Selecione um Nó</h2>
+            <button onclick="closePanel()" class="text-white/50 hover:text-white">✕</button>
+        </div>
+
+        <div class="space-y-4">
+            <div>
+                <span class="text-xs uppercase tracking-widest text-white/40">Tipo</span>
+                <p id="node-type" class="text-cyan-300 font-medium">-</p>
+            </div>
+
+            <div>
+                <span class="text-xs uppercase tracking-widest text-white/40">Descrição / Função</span>
+                <p id="node-desc" class="text-sm text-gray-300 leading-relaxed mt-1">Clique em um elemento da galáxia
+                    para ver seus segredos.</p>
+            </div>
+
+            <div class="pt-4 border-t border-white/10">
+                <span class="text-xs uppercase tracking-widest text-white/40">Ações</span>
+                <form action="/" method="GET" class="mt-2">
+                    <input type="hidden" name="q" id="search-input">
+                    <button type="submit"
+                        class="w-full py-2 bg-purple-600/50 hover:bg-purple-500 rounded text-sm transition border border-purple-500/30">
+                        🔍 Investigar no Scanner
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (Vis.js) -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript">
+        var nodesArr = {{ nodes_json| safe }};
+        var edgesArr = {{ edges_json| safe }};
+
+        var nodes = new vis.DataSet(nodesArr);
+        var edges = new vis.DataSet(edgesArr);
+
+        var container = document.getElementById('mynetwork');
+        var data = { nodes: nodes, edges: edges };
+        var options = {
+            nodes: {
+                shape: 'dot',
+                font: { color: '#ffffff', size: 14, face: 'Inter' },
+                borderWidth: 0,
+                shadow: true,
+                scaling: { min: 10, max: 30 }
+            },
+            edges: {
+                color: { color: 'rgba(255, 255, 255, 0.15)', highlight: '#00ffff' },
+                width: 1,
+                smooth: { type: 'continuous' }
+            },
+            physics: {
+                stabilization: false,
+                barnesHut: {
+                    gravitationalConstant: -3000,
+                    centralGravity: 0.3,
+                    springLength: 95,
+                    springConstant: 0.04,
+                    damping: 0.09
+                }
+            },
+            interaction: { hover: true }
+        };
+
+        var network = new vis.Network(container, data, options);
+
+        // Interaction Logic
+        network.on("click", function (params) {
+            if (params.nodes.length > 0) {
+                var nodeId = params.nodes[0];
+                var nodeData = nodes.get(nodeId);
+                openPanel(nodeData);
+            } else {
+                closePanel();
+            }
+        });
+
+        function openPanel(data) {
+            document.getElementById('info-panel').classList.remove('translate-x-full');
+            document.getElementById('node-label').innerText = data.label;
+            document.getElementById('node-type').innerText = data.type;
+            document.getElementById('node-desc').innerText = data.description || "Sem descrição.";
+            document.getElementById('search-input').value = data.label;
+        }
+
+        function closePanel() {
+            document.getElementById('info-panel').classList.add('translate-x-full');
+        }
+    </script>
+
+    <style>
+        #mynetwork {
+            background: radial-gradient(circle at center, #1a1c23 0%, #000000 100%);
+        }
+    </style>
+</div>
+{% endblock %}

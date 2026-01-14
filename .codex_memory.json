@@ -1,0 +1,1123 @@
+{
+  "project_summary": "",
+  "file_index": {
+    "anatomia/__init__.py": {
+      "summary": "Module anatomia/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.646630"
+    },
+    "anatomia/admin.py": {
+      "summary": "Module anatomia/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.673226"
+    },
+    "anatomia/apps.py": {
+      "summary": "Module anatomia/apps.py defines classes ['AnatomiaConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.698183"
+    },
+    "anatomia/migrations/0001_initial.py": {
+      "summary": "Module anatomia/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.770599"
+    },
+    "anatomia/migrations/0002_celula.py": {
+      "summary": "Module anatomia/migrations/0002_celula.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.796937"
+    },
+    "anatomia/migrations/0003_orgao_inervacao_orgao_insercao_orgao_origem_and_more.py": {
+      "summary": "Module anatomia/migrations/0003_orgao_inervacao_orgao_insercao_orgao_origem_and_more.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.825914"
+    },
+    "anatomia/migrations/__init__.py": {
+      "summary": "Module anatomia/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.825914"
+    },
+    "anatomia/models.py": {
+      "summary": "Module anatomia/models.py defines classes ['SistemaCorporal', 'Orgao', 'Tecido', 'Celula'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.893229"
+    },
+    "anatomia/tests.py": {
+      "summary": "Module anatomia/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.918360"
+    },
+    "anatomia/urls.py": {
+      "summary": "Module anatomia/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.933981"
+    },
+    "anatomia/views.py": {
+      "summary": "Module anatomia/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.982743"
+    },
+    "core/__init__.py": {
+      "summary": "Module core/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.985392"
+    },
+    "core/admin.py": {
+      "summary": "Module core/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:53.987936"
+    },
+    "core/ai_service.py": {
+      "summary": "Module core/ai_service.py defines classes [] and functions ['get_aura_greeting']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.042542"
+    },
+    "core/apps.py": {
+      "summary": "Module core/apps.py defines classes ['CoreConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.060608"
+    },
+    "core/brain.py": {
+      "summary": "Module core/brain.py defines classes ['PubMedService', 'SimuladorBioquimico', 'RelogioBiologico', 'SistemaChakras', 'RedeNeuralSimulada', 'ResonanciaSchumann', 'GhostStation', 'C\u00e9rebroHolistico'] and functions ['search', 'analisar', 'orgao_do_momento', 'analisar_energia', 'calcular_pesos', 'analisar_frequencia', 'sintonizar_frequencia', 'processar_pergunta', 'diagnosticar_holisticamente', 'diagnosticar_holisticamente']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.129557"
+    },
+    "core/management/__init__.py": {
+      "summary": "Module core/management/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.129557"
+    },
+    "core/management/commands/__init__.py": {
+      "summary": "Module core/management/commands/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.129557"
+    },
+    "core/management/commands/popula_sistema.py": {
+      "summary": "Module core/management/commands/popula_sistema.py defines classes ['Command'] and functions ['handle']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.165524"
+    },
+    "core/management/commands/seed_cancer.py": {
+      "summary": "Module core/management/commands/seed_cancer.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.268990"
+    },
+    "core/management/commands/seed_comprehensive_anatomy.py": {
+      "summary": "Module core/management/commands/seed_comprehensive_anatomy.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.305258"
+    },
+    "core/management/commands/seed_depression.py": {
+      "summary": "Module core/management/commands/seed_depression.py defines classes ['Command'] and functions ['handle', 'lip']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.328576"
+    },
+    "core/management/commands/seed_herbal_wisdom.py": {
+      "summary": "Module core/management/commands/seed_herbal_wisdom.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.349753"
+    },
+    "core/management/commands/seed_holistic.py": {
+      "summary": "Module core/management/commands/seed_holistic.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.441240"
+    },
+    "core/management/commands/seed_human_atlas.py": {
+      "summary": "Module core/management/commands/seed_human_atlas.py defines classes ['Command'] and functions ['handle', 'get_or_create_relacao']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.473643"
+    },
+    "core/management/commands/seed_medical_encyclopedia.py": {
+      "summary": "Module core/management/commands/seed_medical_encyclopedia.py defines classes ['Command'] and functions ['handle', 'get_mod', 'criar_relacao']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.537897"
+    },
+    "core/management/commands/seed_medical_universe.py": {
+      "summary": "Module core/management/commands/seed_medical_universe.py defines classes ['Command'] and functions ['handle', 'create_orgao', 'seed_skeletal', 'seed_muscular', 'seed_nervous', 'seed_endocrine', 'seed_digestive_detailed']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.568548"
+    },
+    "core/management/commands/seed_quantum_secrets.py": {
+      "summary": "Module core/management/commands/seed_quantum_secrets.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.596928"
+    },
+    "core/management/commands/seed_spiritual_healing.py": {
+      "summary": "Module core/management/commands/seed_spiritual_healing.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.618660"
+    },
+    "core/management/commands/seed_sugar_truth.py": {
+      "summary": "Module core/management/commands/seed_sugar_truth.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.657068"
+    },
+    "core/management/commands/seed_ultimate_omniscience.py": {
+      "summary": "Module core/management/commands/seed_ultimate_omniscience.py defines classes ['Command'] and functions ['handle', 'conectar']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.741625"
+    },
+    "core/management/commands/seed_universal.py": {
+      "summary": "Module core/management/commands/seed_universal.py defines classes ['Command'] and functions ['handle']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.767692"
+    },
+    "core/migrations/0001_initial.py": {
+      "summary": "Module core/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.791290"
+    },
+    "core/migrations/__init__.py": {
+      "summary": "Module core/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.791290"
+    },
+    "core/models.py": {
+      "summary": "Module core/models.py defines classes ['EntidadeHolisticaMixin', 'RelacaoHolistica', 'Meta'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.825214"
+    },
+    "core/tests.py": {
+      "summary": "Module core/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.827308"
+    },
+    "core/urls.py": {
+      "summary": "Module core/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.857782"
+    },
+    "core/views.py": {
+      "summary": "Module core/views.py defines classes ['HomeView', 'GalaxyView'] and functions ['galaxy_page', 'body_map', 'hologram_view', 'pubmed_search', 'organ_gallery', 'get_context_data', 'get_context_data', 'add_node']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.889096"
+    },
+    "corpo_humano_holistico/__init__.py": {
+      "summary": "Module corpo_humano_holistico/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.904744"
+    },
+    "corpo_humano_holistico/asgi.py": {
+      "summary": "Module corpo_humano_holistico/asgi.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.921076"
+    },
+    "corpo_humano_holistico/settings.py": {
+      "summary": "Module corpo_humano_holistico/settings.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.966914"
+    },
+    "corpo_humano_holistico/urls.py": {
+      "summary": "Module corpo_humano_holistico/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:54.982760"
+    },
+    "corpo_humano_holistico/wsgi.py": {
+      "summary": "Module corpo_humano_holistico/wsgi.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.044492"
+    },
+    "criar_apps_urls.py": {
+      "summary": "Module criar_apps_urls.py defines classes [] and functions ['criar_views', 'criar_urls', 'criar_template', 'atualizar_urls_principal']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.074296"
+    },
+    "criar_models.py": {
+      "summary": "Module criar_models.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.133669"
+    },
+    "fisiologia/__init__.py": {
+      "summary": "Module fisiologia/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.134668"
+    },
+    "fisiologia/admin.py": {
+      "summary": "Module fisiologia/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.136962"
+    },
+    "fisiologia/apps.py": {
+      "summary": "Module fisiologia/apps.py defines classes ['FisiologiaConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.179119"
+    },
+    "fisiologia/models.py": {
+      "summary": "Module fisiologia/models.py defines classes ['ParametroFisiologico', 'Meta'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.189155"
+    },
+    "fisiologia/tests.py": {
+      "summary": "Module fisiologia/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.206691"
+    },
+    "fisiologia/views.py": {
+      "summary": "Module fisiologia/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.226173"
+    },
+    "incrementar_visualizacao.py": {
+      "summary": "Module incrementar_visualizacao.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.247474"
+    },
+    "manage.py": {
+      "summary": "Module manage.py defines classes [] and functions ['main']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.278896"
+    },
+    "management/__init__.py": {
+      "summary": "Module management/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.278896"
+    },
+    "management/admin.py": {
+      "summary": "Module management/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.288963"
+    },
+    "management/apps.py": {
+      "summary": "Module management/apps.py defines classes ['ManagementConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.311253"
+    },
+    "management/management/__init__.py": {
+      "summary": "Module management/management/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.311253"
+    },
+    "management/management/commands/__init__.py": {
+      "summary": "Module management/management/commands/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.316461"
+    },
+    "management/management/commands/setup_initial_data.py": {
+      "summary": "Module management/management/commands/setup_initial_data.py defines classes ['Command'] and functions ['handle']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.333262"
+    },
+    "management/models.py": {
+      "summary": "Module management/models.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.369800"
+    },
+    "management/tests.py": {
+      "summary": "Module management/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.373369"
+    },
+    "management/views.py": {
+      "summary": "Module management/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.374440"
+    },
+    "metabolismo/__init__.py": {
+      "summary": "Module metabolismo/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.374440"
+    },
+    "metabolismo/admin.py": {
+      "summary": "Module metabolismo/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.379816"
+    },
+    "metabolismo/apps.py": {
+      "summary": "Module metabolismo/apps.py defines classes ['MetabolismoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.400526"
+    },
+    "metabolismo/migrations/0001_initial.py": {
+      "summary": "Module metabolismo/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.453091"
+    },
+    "metabolismo/migrations/0002_processometabolico_descricao_tecnica_and_more.py": {
+      "summary": "Module metabolismo/migrations/0002_processometabolico_descricao_tecnica_and_more.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.473343"
+    },
+    "metabolismo/migrations/0003_alter_substancia_tipo_desequilibrio.py": {
+      "summary": "Module metabolismo/migrations/0003_alter_substancia_tipo_desequilibrio.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.520357"
+    },
+    "metabolismo/migrations/__init__.py": {
+      "summary": "Module metabolismo/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.520357"
+    },
+    "metabolismo/models.py": {
+      "summary": "Module metabolismo/models.py defines classes ['Substancia', 'Desequilibrio', 'Alimento', 'ProcessoMetabolico'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.554762"
+    },
+    "metabolismo/tests.py": {
+      "summary": "Module metabolismo/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.560791"
+    },
+    "metabolismo/urls.py": {
+      "summary": "Module metabolismo/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.595469"
+    },
+    "metabolismo/views.py": {
+      "summary": "Module metabolismo/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.654063"
+    },
+    "pacientes/__init__.py": {
+      "summary": "Module pacientes/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.654063"
+    },
+    "pacientes/admin.py": {
+      "summary": "Module pacientes/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.654063"
+    },
+    "pacientes/apps.py": {
+      "summary": "Module pacientes/apps.py defines classes ['PacientesConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.700716"
+    },
+    "pacientes/migrations/0001_initial.py": {
+      "summary": "Module pacientes/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.732725"
+    },
+    "pacientes/migrations/__init__.py": {
+      "summary": "Module pacientes/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.732725"
+    },
+    "pacientes/models.py": {
+      "summary": "Module pacientes/models.py defines classes ['Paciente', 'Checkup'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.782346"
+    },
+    "pacientes/tests.py": {
+      "summary": "Module pacientes/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.843280"
+    },
+    "pacientes/urls.py": {
+      "summary": "Module pacientes/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.867104"
+    },
+    "pacientes/views.py": {
+      "summary": "Module pacientes/views.py defines classes ['DiagnosticView'] and functions ['get', 'post']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.915747"
+    },
+    "psicologia/__init__.py": {
+      "summary": "Module psicologia/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.915747"
+    },
+    "psicologia/admin.py": {
+      "summary": "Module psicologia/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.918950"
+    },
+    "psicologia/apps.py": {
+      "summary": "Module psicologia/apps.py defines classes ['PsicologiaConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.929971"
+    },
+    "psicologia/migrations/0001_initial.py": {
+      "summary": "Module psicologia/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:55.974680"
+    },
+    "psicologia/migrations/0002_pensamento.py": {
+      "summary": "Module psicologia/migrations/0002_pensamento.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.001307"
+    },
+    "psicologia/migrations/__init__.py": {
+      "summary": "Module psicologia/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.001307"
+    },
+    "psicologia/models.py": {
+      "summary": "Module psicologia/models.py defines classes ['Emocao', 'Pensamento', 'Arquetipo', 'EstadoMental'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.055250"
+    },
+    "psicologia/tests.py": {
+      "summary": "Module psicologia/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.056768"
+    },
+    "psicologia/urls.py": {
+      "summary": "Module psicologia/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.087040"
+    },
+    "psicologia/views.py": {
+      "summary": "Module psicologia/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.126739"
+    },
+    "seed_data.py": {
+      "summary": "Module seed_data.py defines classes ['Command'] and functions ['handle']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.162740"
+    },
+    "simbologia/__init__.py": {
+      "summary": "Module simbologia/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.163739"
+    },
+    "simbologia/admin.py": {
+      "summary": "Module simbologia/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.164615"
+    },
+    "simbologia/apps.py": {
+      "summary": "Module simbologia/apps.py defines classes ['SimbologiaConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.199402"
+    },
+    "simbologia/migrations/0001_initial.py": {
+      "summary": "Module simbologia/migrations/0001_initial.py defines classes ['Migration'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.237241"
+    },
+    "simbologia/migrations/__init__.py": {
+      "summary": "Module simbologia/migrations/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.237241"
+    },
+    "simbologia/models.py": {
+      "summary": "Module simbologia/models.py defines classes ['Chakra', 'Meridiano'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.266672"
+    },
+    "simbologia/tests.py": {
+      "summary": "Module simbologia/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.271763"
+    },
+    "simbologia/urls.py": {
+      "summary": "Module simbologia/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.298737"
+    },
+    "simbologia/views.py": {
+      "summary": "Module simbologia/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.327808"
+    },
+    "sistema_articular/__init__.py": {
+      "summary": "Module sistema_articular/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.327808"
+    },
+    "sistema_articular/admin.py": {
+      "summary": "Module sistema_articular/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.327808"
+    },
+    "sistema_articular/apps.py": {
+      "summary": "Module sistema_articular/apps.py defines classes ['SistemaArticularConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.360534"
+    },
+    "sistema_articular/models.py": {
+      "summary": "Module sistema_articular/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.402612"
+    },
+    "sistema_articular/tests.py": {
+      "summary": "Module sistema_articular/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.406393"
+    },
+    "sistema_articular/views.py": {
+      "summary": "Module sistema_articular/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.421495"
+    },
+    "sistema_cardiovascular/__init__.py": {
+      "summary": "Module sistema_cardiovascular/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.421495"
+    },
+    "sistema_cardiovascular/admin.py": {
+      "summary": "Module sistema_cardiovascular/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.425386"
+    },
+    "sistema_cardiovascular/apps.py": {
+      "summary": "Module sistema_cardiovascular/apps.py defines classes ['SistemaCardiovascularConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.455447"
+    },
+    "sistema_cardiovascular/models.py": {
+      "summary": "Module sistema_cardiovascular/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.485503"
+    },
+    "sistema_cardiovascular/tests.py": {
+      "summary": "Module sistema_cardiovascular/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.487503"
+    },
+    "sistema_cardiovascular/urls.py": {
+      "summary": "Module sistema_cardiovascular/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.518317"
+    },
+    "sistema_cardiovascular/views.py": {
+      "summary": "Module sistema_cardiovascular/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.544986"
+    },
+    "sistema_circulatorio/__init__.py": {
+      "summary": "Module sistema_circulatorio/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.552382"
+    },
+    "sistema_circulatorio/admin.py": {
+      "summary": "Module sistema_circulatorio/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.554679"
+    },
+    "sistema_circulatorio/apps.py": {
+      "summary": "Module sistema_circulatorio/apps.py defines classes ['SistemaCirculatorioConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.577326"
+    },
+    "sistema_circulatorio/models.py": {
+      "summary": "Module sistema_circulatorio/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.629329"
+    },
+    "sistema_circulatorio/tests.py": {
+      "summary": "Module sistema_circulatorio/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.631384"
+    },
+    "sistema_circulatorio/views.py": {
+      "summary": "Module sistema_circulatorio/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.635524"
+    },
+    "sistema_digestivo/__init__.py": {
+      "summary": "Module sistema_digestivo/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.635632"
+    },
+    "sistema_digestivo/admin.py": {
+      "summary": "Module sistema_digestivo/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.638995"
+    },
+    "sistema_digestivo/apps.py": {
+      "summary": "Module sistema_digestivo/apps.py defines classes ['SistemaDigestivoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.668150"
+    },
+    "sistema_digestivo/models.py": {
+      "summary": "Module sistema_digestivo/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.709113"
+    },
+    "sistema_digestivo/tests.py": {
+      "summary": "Module sistema_digestivo/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.711277"
+    },
+    "sistema_digestivo/urls.py": {
+      "summary": "Module sistema_digestivo/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.740280"
+    },
+    "sistema_digestivo/views.py": {
+      "summary": "Module sistema_digestivo/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.808625"
+    },
+    "sistema_endocrino/__init__.py": {
+      "summary": "Module sistema_endocrino/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.808625"
+    },
+    "sistema_endocrino/admin.py": {
+      "summary": "Module sistema_endocrino/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.812322"
+    },
+    "sistema_endocrino/apps.py": {
+      "summary": "Module sistema_endocrino/apps.py defines classes ['SistemaEndocrinoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.850662"
+    },
+    "sistema_endocrino/models.py": {
+      "summary": "Module sistema_endocrino/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.922572"
+    },
+    "sistema_endocrino/tests.py": {
+      "summary": "Module sistema_endocrino/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.931306"
+    },
+    "sistema_endocrino/urls.py": {
+      "summary": "Module sistema_endocrino/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.956793"
+    },
+    "sistema_endocrino/views.py": {
+      "summary": "Module sistema_endocrino/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.984316"
+    },
+    "sistema_hematopoietico/__init__.py": {
+      "summary": "Module sistema_hematopoietico/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.992415"
+    },
+    "sistema_hematopoietico/admin.py": {
+      "summary": "Module sistema_hematopoietico/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:56.995412"
+    },
+    "sistema_hematopoietico/apps.py": {
+      "summary": "Module sistema_hematopoietico/apps.py defines classes ['SistemaHematopoieticoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.025182"
+    },
+    "sistema_hematopoietico/models.py": {
+      "summary": "Module sistema_hematopoietico/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.084293"
+    },
+    "sistema_hematopoietico/tests.py": {
+      "summary": "Module sistema_hematopoietico/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.087343"
+    },
+    "sistema_hematopoietico/urls.py": {
+      "summary": "Module sistema_hematopoietico/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.114537"
+    },
+    "sistema_hematopoietico/views.py": {
+      "summary": "Module sistema_hematopoietico/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.188537"
+    },
+    "sistema_immune/__init__.py": {
+      "summary": "Module sistema_immune/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.188537"
+    },
+    "sistema_immune/admin.py": {
+      "summary": "Module sistema_immune/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.207828"
+    },
+    "sistema_immune/apps.py": {
+      "summary": "Module sistema_immune/apps.py defines classes ['SistemaImmuneConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.245752"
+    },
+    "sistema_immune/models.py": {
+      "summary": "Module sistema_immune/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.323793"
+    },
+    "sistema_immune/tests.py": {
+      "summary": "Module sistema_immune/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.328384"
+    },
+    "sistema_immune/views.py": {
+      "summary": "Module sistema_immune/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.331062"
+    },
+    "sistema_linfatico/__init__.py": {
+      "summary": "Module sistema_linfatico/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.332131"
+    },
+    "sistema_linfatico/admin.py": {
+      "summary": "Module sistema_linfatico/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.332131"
+    },
+    "sistema_linfatico/apps.py": {
+      "summary": "Module sistema_linfatico/apps.py defines classes ['SistemaLinfaticoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.364036"
+    },
+    "sistema_linfatico/models.py": {
+      "summary": "Module sistema_linfatico/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.387881"
+    },
+    "sistema_linfatico/tests.py": {
+      "summary": "Module sistema_linfatico/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.398275"
+    },
+    "sistema_linfatico/views.py": {
+      "summary": "Module sistema_linfatico/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.400212"
+    },
+    "sistema_muscular/__init__.py": {
+      "summary": "Module sistema_muscular/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.400212"
+    },
+    "sistema_muscular/admin.py": {
+      "summary": "Module sistema_muscular/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.404458"
+    },
+    "sistema_muscular/apps.py": {
+      "summary": "Module sistema_muscular/apps.py defines classes ['SistemaMuscularConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.444567"
+    },
+    "sistema_muscular/models.py": {
+      "summary": "Module sistema_muscular/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.526507"
+    },
+    "sistema_muscular/tests.py": {
+      "summary": "Module sistema_muscular/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.532260"
+    },
+    "sistema_muscular/urls.py": {
+      "summary": "Module sistema_muscular/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.605549"
+    },
+    "sistema_muscular/views.py": {
+      "summary": "Module sistema_muscular/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.643279"
+    },
+    "sistema_nervoso/__init__.py": {
+      "summary": "Module sistema_nervoso/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.654800"
+    },
+    "sistema_nervoso/admin.py": {
+      "summary": "Module sistema_nervoso/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.657101"
+    },
+    "sistema_nervoso/apps.py": {
+      "summary": "Module sistema_nervoso/apps.py defines classes ['SistemaNervosoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.686309"
+    },
+    "sistema_nervoso/models.py": {
+      "summary": "Module sistema_nervoso/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.816687"
+    },
+    "sistema_nervoso/tests.py": {
+      "summary": "Module sistema_nervoso/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.826386"
+    },
+    "sistema_nervoso/urls.py": {
+      "summary": "Module sistema_nervoso/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.839432"
+    },
+    "sistema_nervoso/views.py": {
+      "summary": "Module sistema_nervoso/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.870424"
+    },
+    "sistema_osseo/__init__.py": {
+      "summary": "Module sistema_osseo/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.870424"
+    },
+    "sistema_osseo/admin.py": {
+      "summary": "Module sistema_osseo/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.882719"
+    },
+    "sistema_osseo/apps.py": {
+      "summary": "Module sistema_osseo/apps.py defines classes ['SistemaOsseoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:57.936421"
+    },
+    "sistema_osseo/models.py": {
+      "summary": "Module sistema_osseo/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.003558"
+    },
+    "sistema_osseo/tests.py": {
+      "summary": "Module sistema_osseo/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.014518"
+    },
+    "sistema_osseo/urls.py": {
+      "summary": "Module sistema_osseo/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.052944"
+    },
+    "sistema_osseo/views.py": {
+      "summary": "Module sistema_osseo/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.084588"
+    },
+    "sistema_renal/__init__.py": {
+      "summary": "Module sistema_renal/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.084588"
+    },
+    "sistema_renal/admin.py": {
+      "summary": "Module sistema_renal/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.086786"
+    },
+    "sistema_renal/apps.py": {
+      "summary": "Module sistema_renal/apps.py defines classes ['SistemaRenalConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.117991"
+    },
+    "sistema_renal/models.py": {
+      "summary": "Module sistema_renal/models.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.119857"
+    },
+    "sistema_renal/tests.py": {
+      "summary": "Module sistema_renal/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.122177"
+    },
+    "sistema_renal/views.py": {
+      "summary": "Module sistema_renal/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.125193"
+    },
+    "sistema_reprodutor/__init__.py": {
+      "summary": "Module sistema_reprodutor/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.125193"
+    },
+    "sistema_reprodutor/admin.py": {
+      "summary": "Module sistema_reprodutor/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.131248"
+    },
+    "sistema_reprodutor/apps.py": {
+      "summary": "Module sistema_reprodutor/apps.py defines classes ['SistemaReprodutorConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.160478"
+    },
+    "sistema_reprodutor/models.py": {
+      "summary": "Module sistema_reprodutor/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.187540"
+    },
+    "sistema_reprodutor/tests.py": {
+      "summary": "Module sistema_reprodutor/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.194139"
+    },
+    "sistema_reprodutor/urls.py": {
+      "summary": "Module sistema_reprodutor/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.239133"
+    },
+    "sistema_reprodutor/views.py": {
+      "summary": "Module sistema_reprodutor/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.322709"
+    },
+    "sistema_respiratorio/__init__.py": {
+      "summary": "Module sistema_respiratorio/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.332781"
+    },
+    "sistema_respiratorio/admin.py": {
+      "summary": "Module sistema_respiratorio/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.344971"
+    },
+    "sistema_respiratorio/apps.py": {
+      "summary": "Module sistema_respiratorio/apps.py defines classes ['SistemaRespiratorioConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.364474"
+    },
+    "sistema_respiratorio/models.py": {
+      "summary": "Module sistema_respiratorio/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.411650"
+    },
+    "sistema_respiratorio/tests.py": {
+      "summary": "Module sistema_respiratorio/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.461974"
+    },
+    "sistema_respiratorio/urls.py": {
+      "summary": "Module sistema_respiratorio/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.529086"
+    },
+    "sistema_respiratorio/views.py": {
+      "summary": "Module sistema_respiratorio/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.621253"
+    },
+    "sistema_sensitivo/__init__.py": {
+      "summary": "Module sistema_sensitivo/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.621253"
+    },
+    "sistema_sensitivo/admin.py": {
+      "summary": "Module sistema_sensitivo/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.631394"
+    },
+    "sistema_sensitivo/apps.py": {
+      "summary": "Module sistema_sensitivo/apps.py defines classes ['SistemaSensitivoConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.660479"
+    },
+    "sistema_sensitivo/models.py": {
+      "summary": "Module sistema_sensitivo/models.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.660479"
+    },
+    "sistema_sensitivo/tests.py": {
+      "summary": "Module sistema_sensitivo/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.676112"
+    },
+    "sistema_sensitivo/views.py": {
+      "summary": "Module sistema_sensitivo/views.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.679420"
+    },
+    "sistema_tegumentar/__init__.py": {
+      "summary": "Module sistema_tegumentar/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.679420"
+    },
+    "sistema_tegumentar/admin.py": {
+      "summary": "Module sistema_tegumentar/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.683517"
+    },
+    "sistema_tegumentar/apps.py": {
+      "summary": "Module sistema_tegumentar/apps.py defines classes ['SistemaTegumentarConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.728063"
+    },
+    "sistema_tegumentar/models.py": {
+      "summary": "Module sistema_tegumentar/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.770770"
+    },
+    "sistema_tegumentar/tests.py": {
+      "summary": "Module sistema_tegumentar/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.773292"
+    },
+    "sistema_tegumentar/urls.py": {
+      "summary": "Module sistema_tegumentar/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.815366"
+    },
+    "sistema_tegumentar/views.py": {
+      "summary": "Module sistema_tegumentar/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.881626"
+    },
+    "sistema_urinario/__init__.py": {
+      "summary": "Module sistema_urinario/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.881626"
+    },
+    "sistema_urinario/admin.py": {
+      "summary": "Module sistema_urinario/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.904854"
+    },
+    "sistema_urinario/apps.py": {
+      "summary": "Module sistema_urinario/apps.py defines classes ['SistemaUrinarioConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:58.938411"
+    },
+    "sistema_urinario/models.py": {
+      "summary": "Module sistema_urinario/models.py defines classes ['Estrutura'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.024732"
+    },
+    "sistema_urinario/tests.py": {
+      "summary": "Module sistema_urinario/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.040111"
+    },
+    "sistema_urinario/urls.py": {
+      "summary": "Module sistema_urinario/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.061315"
+    },
+    "sistema_urinario/views.py": {
+      "summary": "Module sistema_urinario/views.py defines classes [] and functions ['dashboard']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.118550"
+    },
+    "usuarios/__init__.py": {
+      "summary": "Module usuarios/__init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.118550"
+    },
+    "usuarios/admin.py": {
+      "summary": "Module usuarios/admin.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.126230"
+    },
+    "usuarios/apps.py": {
+      "summary": "Module usuarios/apps.py defines classes ['UsuariosConfig'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.151297"
+    },
+    "usuarios/forms.py": {
+      "summary": "Module usuarios/forms.py defines classes ['CustomUserCreationForm', 'Meta'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.194809"
+    },
+    "usuarios/models.py": {
+      "summary": "Module usuarios/models.py defines classes ['PerfilUsuario'] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.241521"
+    },
+    "usuarios/tests.py": {
+      "summary": "Module usuarios/tests.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.261843"
+    },
+    "usuarios/urls.py": {
+      "summary": "Module usuarios/urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.345031"
+    },
+    "usuarios/views.py": {
+      "summary": "Module usuarios/views.py defines classes [] and functions ['dashboard', 'register']",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-13T13:40:59.388747"
+    }
+  },
+  "dependencies": {},
+  "tech_stack": [],
+  "last_scan": null
+}

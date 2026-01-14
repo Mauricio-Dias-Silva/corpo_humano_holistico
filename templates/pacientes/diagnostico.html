@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Consulta Holística & Diagnóstico{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4 max-w-4xl pt-20">
+    <div class="glass-panel p-8 border border-white/10 relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute top-0 right-0 p-20 opacity-10 pointer-events-none">
+            <div class="w-64 h-64 rounded-full bg-green-500 blur-3xl animate-pulse"></div>
+        </div>
+
+        <h1 class="text-3xl font-light text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-cyan-400 mb-6">
+            🩺 Diagnóstico Holístico & Twin Digital
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Form -->
+            <div>
+                <form method="POST" class="space-y-4">
+                    {% csrf_token %}
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-white/50 mb-1">Seu Nome</label>
+                        <input type="text" name="nome" value="{{ paciente.nome|default:'' }}"
+                            class="w-full bg-black/30 border border-white/10 rounded p-3 text-white focus:border-green-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-white/50 mb-1">Idade</label>
+                        <input type="number" name="idade" placeholder="Ex: 35"
+                            class="w-full bg-black/30 border border-white/10 rounded p-3 text-white focus:border-green-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-white/50 mb-1">O que você sente?
+                            (Sintomas)</label>
+                        <textarea name="queixa" rows="4"
+                            placeholder="Ex: Sinto muita dor de cabeça, tristeza, falta de ferro e cansaço."
+                            class="w-full bg-black/30 border border-white/10 rounded p-3 text-white focus:border-green-500 transition">{{ queixa|default:'' }}</textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3 bg-gradient-to-r from-green-600 to-teal-600 rounded font-bold uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                        Analisar Holisticamente
+                    </button>
+                </form>
+            </div>
+
+            <!-- Result Card -->
+            <div class="relative">
+                {% if laudo %}
+                <div class="bg-white/5 border border-white/10 rounded p-6 shadow-2xl animate-fade-in">
+                    <div class="flex items-center space-x-3 mb-4 border-b border-white/10 pb-4">
+                        <div
+                            class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-300">
+                            ✨
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white"> Parecer do Oráculo</h3>
+                            <p class="text-xs text-white/50">Baseado em Biofísica & Medicina Ancestral</p>
+                        </div>
+                    </div>
+
+                    <div class="prose prose-invert text-sm leading-relaxed text-gray-300">
+                        {{ laudo|linebreaks }}
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-white/5 text-center">
+                        <p class="text-xs text-orange-300 italic">"O corpo fala o que a alma cala."</p>
+                    </div>
+                </div>
+                {% else %}
+                <div
+                    class="h-full flex flex-col items-center justify-center text-center p-8 opacity-50 border border-dashed border-white/10 rounded">
+                    <div class="text-4xl mb-4">🧘‍♂️</div>
+                    <h3 class="text-lg font-medium text-white">Aguardando Avaliação</h3>
+                    <p class="text-sm text-gray-400 mt-2">Descreva seus sintomas para que a IA possa rastrear a origem
+                        emocional e biológica.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

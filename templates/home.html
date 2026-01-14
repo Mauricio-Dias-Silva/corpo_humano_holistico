@@ -1,22 +1,331 @@
 {% extends 'base.html' %}
 
+{% block title %}Holistic Engine - O Software Mais Avançado do Corpo Humano{% endblock %}
+
 {% block content %}
-<section class="hero-section text-center">
-  <div class="container">
-    {% if user.is_authenticated and aura_greeting %}
-    <div class="card text-bg-primary bg-gradient mb-5 shadow-lg col-md-8 mx-auto">
-        <div class="card-body p-4">
-            <h5 class="card-title">Uma mensagem da Aura para você, {{ user.username }}:</h5>
-            <p class="card-text mb-0">"{{ aura_greeting|linebreaksbr }}"</p>
+<!-- HERO SECTION with 3D Animation Background -->
+<div class="relative min-h-[80vh] flex items-center justify-center overflow-hidden -mt-8 mb-12">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-900/20 to-black"></div>
+
+    <!-- Floating Particles -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+            style="animation-delay: 1s"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse"
+            style="animation-delay: 2s"></div>
+    </div>
+
+    <!-- DNA Helix Animation (CSS) -->
+    <div class="absolute left-10 h-full opacity-20">
+        <div class="dna-strand"></div>
+    </div>
+    <div class="absolute right-10 h-full opacity-20">
+        <div class="dna-strand" style="animation-delay: -5s"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10 text-center px-4 max-w-4xl">
+        <div class="mb-6">
+            <span
+                class="px-4 py-2 bg-cyan-500/20 text-cyan-400 text-xs uppercase tracking-widest rounded-full border border-cyan-500/30">
+                🧬 Versão 5.0 • Mega Brain • Ghost Station • PubMed
+            </span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
+                Holistic Engine
+            </span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light">
+            O único software que integra <span class="text-cyan-400">Anatomia 3D</span>,
+            <span class="text-purple-400">Sabedoria Ancestral</span> e
+            <span class="text-green-400">Ciência do PubMed</span>.
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="/holograma/"
+                class="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-xl font-bold text-lg shadow-lg shadow-purple-500/25 hover:shadow-purple-500/50 transition-all hover:scale-105">
+                🌐 Explorar Holograma 3D
+                <span class="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
+            </a>
+            <a href="/galaxy/"
+                class="px-8 py-4 bg-white/5 border border-white/20 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                ✨ Ver Galáxia Neural
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="glass-card p-4">
+                <div class="text-3xl font-bold text-cyan-400">15+</div>
+                <div class="text-xs text-gray-400">Órgãos 3D</div>
+            </div>
+            <div class="glass-card p-4">
+                <div class="text-3xl font-bold text-purple-400">500+</div>
+                <div class="text-xs text-gray-400">Entidades Mapeadas</div>
+            </div>
+            <div class="glass-card p-4">
+                <div class="text-3xl font-bold text-green-400">∞</div>
+                <div class="text-xs text-gray-400">Estudos PubMed</div>
+            </div>
+            <div class="glass-card p-4">
+                <div class="text-3xl font-bold text-pink-400">7</div>
+                <div class="text-xs text-gray-400">Chakras Ativos</div>
+            </div>
         </div>
     </div>
-    {% endif %}
+</div>
 
-    <h1 class="display-4">DECODIFIQUE-SE.</h1>
-    <p class="lead col-md-8 mx-auto text-muted">Uma jornada de autoconhecimento guiada por dados, alimentada pela sua intuição e impulsionada por inteligência artificial.</p>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-5">
-        <a href="#" class="btn btn-secondary btn-lg px-4 gap-3">Inicie sua Jornada</a>
+<!-- FEATURE CARDS SECTION -->
+<div class="max-w-7xl mx-auto px-4 mb-16">
+    <h2
+        class="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+        Tecnologias Integradas
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 3D Hologram Card -->
+        <a href="/holograma/"
+            class="group glass-panel p-6 border-t-2 border-cyan-500 hover:border-cyan-400 transition-all hover:scale-105">
+            <div class="text-4xl mb-4">🌐</div>
+            <h3 class="text-xl font-bold text-white mb-2">Holograma 3D</h3>
+            <p class="text-gray-400 text-sm mb-4">Corpo humano em WebGL. Rotacione, zoom, clique nos órgãos.</p>
+            <div class="flex items-center text-cyan-400 text-sm group-hover:translate-x-2 transition-transform">
+                Acessar <span class="ml-2">→</span>
+            </div>
+        </a>
+
+        <!-- Galaxy View Card -->
+        <a href="/galaxy/"
+            class="group glass-panel p-6 border-t-2 border-purple-500 hover:border-purple-400 transition-all hover:scale-105">
+            <div class="text-4xl mb-4">✨</div>
+            <h3 class="text-xl font-bold text-white mb-2">Galáxia Neural</h3>
+            <p class="text-gray-400 text-sm mb-4">Visualize todas as conexões holísticas como uma rede neural.</p>
+            <div class="flex items-center text-purple-400 text-sm group-hover:translate-x-2 transition-transform">
+                Explorar <span class="ml-2">→</span>
+            </div>
+        </a>
+
+        <!-- PubMed Card -->
+        <div class="glass-panel p-6 border-t-2 border-green-500">
+            <div class="text-4xl mb-4">🔬</div>
+            <h3 class="text-xl font-bold text-white mb-2">PubMed Integrado</h3>
+            <p class="text-gray-400 text-sm mb-4">Estudos científicos reais. Clique em um órgão e veja papers.</p>
+            <div class="flex items-center text-green-400 text-sm">
+                Via Holograma <span class="ml-2">✓</span>
+            </div>
+        </div>
+
+        <!-- Ghost Station Card -->
+        <div class="glass-panel p-6 border-t-2 border-pink-500">
+            <div class="text-4xl mb-4">👻</div>
+            <h3 class="text-xl font-bold text-white mb-2">Ghost Station</h3>
+            <p class="text-gray-400 text-sm mb-4">Prescrição Sônica. Frequências Solfeggio para cura.</p>
+            <div class="flex items-center text-pink-400 text-sm">
+                Integrado ao Diagnóstico <span class="ml-2">✓</span>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
+</div>
+
+<!-- AI ORACLE CHAT SECTION -->
+<div class="max-w-3xl mx-auto px-4 mb-16">
+    <div class="glass-panel p-8 border border-purple-500/30 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+        <!-- Avatar -->
+        <div class="flex items-center space-x-4 mb-6 relative z-10">
+            <div class="relative w-16 h-16">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full animate-spin-slow blur-sm opacity-70">
+                </div>
+                <div
+                    class="absolute inset-1 bg-black rounded-full flex items-center justify-center border border-white/20 z-10">
+                    <span class="text-2xl">🧠</span>
+                </div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-400 rounded-full border-2 border-black z-20">
+                </div>
+            </div>
+            <div>
+                <h3
+                    class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-purple-200">
+                    Mega Brain Oracle
+                </h3>
+                <p class="text-xs text-white/50">v4.0 • Gaia Connected • Ghost Station</p>
+            </div>
+        </div>
+
+        <!-- Chat Response -->
+        {% if chat_response %}
+        <div class="mb-6 bg-white/5 rounded-xl p-4 text-sm leading-relaxed border border-white/10 relative z-10">
+            {{ chat_response|linebreaksbr }}
+        </div>
+        {% else %}
+        <div class="mb-6 bg-white/5 rounded-xl p-4 text-sm text-gray-400 italic border border-white/10 relative z-10">
+            Pergunte sobre qualquer coisa: "O que é câncer?", "Por que tenho medo?", "Como funciona o coração?"...
+        </div>
+        {% endif %}
+
+        <!-- Input -->
+        <form action="/" method="GET" class="relative z-10">
+            <input type="text" name="chat_msg" placeholder="Faça uma pergunta ao Oráculo..."
+                value="{{ chat_input|default:'' }}"
+                class="w-full bg-black/40 border border-white/20 rounded-xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition">
+            <button type="submit"
+                class="absolute right-3 top-3 px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:opacity-90 transition text-white text-sm font-bold">
+                Perguntar
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- QUICK ACCESS GRID -->
+<div class="max-w-7xl mx-auto px-4 mb-16">
+    <h2 class="text-2xl font-bold mb-8 text-gray-300">Acesso Rápido</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Bio-Systems -->
+        <div class="glass-card p-6">
+            <h3 class="text-lg font-bold text-cyan-300 mb-4 border-b border-white/10 pb-2">🫀 Sistemas Biológicos</h3>
+            <div class="space-y-2 max-h-64 overflow-y-auto custom-scrollbar">
+                {% for sistema in sistemas %}
+                <div class="text-sm text-gray-400 hover:text-white transition cursor-pointer py-1">
+                    {{ sistema.nome }} <span class="text-gray-600">({{ sistema.orgaos.count }})</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Emotions -->
+        <div class="glass-card p-6">
+            <h3 class="text-lg font-bold text-pink-300 mb-4 border-b border-white/10 pb-2">💜 Emoções Mapeadas</h3>
+            <div class="flex flex-wrap gap-2 max-h-64 overflow-y-auto custom-scrollbar">
+                {% for emocao in emocoes %}
+                <span class="px-2 py-1 text-xs rounded-full 
+                    {% if emocao.polaridade == 'POSITIVA' %}bg-green-500/20 text-green-300
+                    {% else %}bg-red-500/20 text-red-300{% endif %}">
+                    {{ emocao.nome }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="glass-card p-6">
+            <h3 class="text-lg font-bold text-purple-300 mb-4 border-b border-white/10 pb-2">⚡ Stack Tecnológico</h3>
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">Three.js (WebGL)</span>
+                    <span class="text-green-400">✓ Ativo</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">PubMed API</span>
+                    <span class="text-green-400">✓ Conectado</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">Ghost Station</span>
+                    <span class="text-green-400">✓ Integrado</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">Schumann Resonance</span>
+                    <span class="text-green-400">✓ Online</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">Django Backend</span>
+                    <span class="text-green-400">✓ Stable</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="max-w-4xl mx-auto px-4 text-center pb-16">
+    <div class="glass-panel p-8 border border-cyan-500/20">
+        <h2 class="text-2xl font-bold mb-4 text-white">Pronto para explorar o corpo humano?</h2>
+        <p class="text-gray-400 mb-6">Comece pelo Holograma 3D e descubra conexões que você nunca imaginou.</p>
+        <a href="/holograma/"
+            class="inline-block px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-xl font-bold text-lg shadow-lg hover:shadow-cyan-500/25 transition-all hover:scale-105">
+            🚀 Iniciar Experiência
+        </a>
+    </div>
+</div>
+
+<!-- DNA Animation CSS -->
+<style>
+    .dna-strand {
+        width: 4px;
+        height: 100%;
+        background: repeating-linear-gradient(0deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 255, 255, 0.3) 10px,
+                rgba(0, 255, 255, 0.3) 20px,
+                transparent 20px,
+                transparent 30px,
+                rgba(147, 51, 234, 0.3) 30px,
+                rgba(147, 51, 234, 0.3) 40px);
+        animation: dna-scroll 10s linear infinite;
+    }
+
+    @keyframes dna-scroll {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .animate-spin-slow {
+        animation: spin 8s linear infinite;
+    }
+</style>
+
+<!-- AUTO-SPEAK SCRIPT -->
+{% if chat_response %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const text = "{{ chat_response|striptags|escapejs }}";
+
+        function speak() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.1;
+                utterance.pitch = 1.2;
+
+                let voices = window.speechSynthesis.getVoices();
+                function setFemaleVoice() {
+                    const femaleVoice = voices.find(v =>
+                        (v.lang === 'pt-BR' && (v.name.includes('Google') || v.name.includes('Luciana')))
+                    );
+                    if (femaleVoice) utterance.voice = femaleVoice;
+                    else {
+                        const ptVoice = voices.find(v => v.lang === 'pt-BR');
+                        if (ptVoice) utterance.voice = ptVoice;
+                    }
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                if (voices.length === 0) {
+                    window.speechSynthesis.onvoiceschanged = () => {
+                        voices = window.speechSynthesis.getVoices();
+                        setFemaleVoice();
+                    };
+                } else {
+                    setFemaleVoice();
+                }
+            }
+        }
+        setTimeout(speak, 500);
+    });
+</script>
+{% endif %}
 {% endblock %}
