@@ -129,5 +129,29 @@ def pubmed_search(request):
     return JsonResponse({'studies': results})
 
 def organ_gallery(request):
-    """Galeria de órgãos 3D com modelos reais."""
-    return render(request, 'organ_gallery.html')
+    """Galeria de órgãos 3D com modelos reais e sabedoria IA."""
+    
+    # Sketchfab IDs Map (Hardcoded for Visuals)
+    SKETCHFAB_IDS = {
+        'Coração': '6cad24e83f3f4e93b4b3c6a7f3b5c7e3',
+        'Cérebro': '7a1d24b8c5e4492d9a5c6e7f8b9c0d1e',
+        'Pulmões': '5b3c24d9e6f4a82b1c5d7e8f9a0b1c2d',
+        'Fígado': '8c4d35e0f7a5b93c2d6e8f9a1b2c3d4e',
+        'Rins': '9d5e46f1a8b6c04d3e7f9a2b3c4d5e6f',
+        'Estômago': '0e6f57a2b9c7d15e4f8a9b3c4d5e6f7a',
+    }
+    
+    # Fetch AI-Enriched Organs
+    orgaos_db = Orgao.objects.filter(nome__in=SKETCHFAB_IDS.keys())
+    
+    # Merge DB data with Visuals
+    orgaos_list = []
+    for orgao in orgaos_db:
+        orgaos_list.append({
+            'obj': orgao,
+            'sketchfab_id': SKETCHFAB_IDS.get(orgao.nome),
+            # Se a IA já preencheu, usa. Senão, placeholder.
+            'holistico': orgao.representacao_emocional or "Aguardando insight da IA..."
+        })
+        
+    return render(request, 'organ_gallery.html', {'orgaos': orgaos_list})
