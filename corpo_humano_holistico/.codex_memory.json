@@ -1,0 +1,33 @@
+{
+  "project_summary": "",
+  "file_index": {
+    "__init__.py": {
+      "summary": "Module __init__.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-27T14:10:31.611553"
+    },
+    "asgi.py": {
+      "summary": "Module asgi.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-27T14:10:31.613551"
+    },
+    "settings.py": {
+      "summary": "Module settings.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-27T14:10:31.615551"
+    },
+    "urls.py": {
+      "summary": "Module urls.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-27T14:10:31.616552"
+    },
+    "wsgi.py": {
+      "summary": "Module wsgi.py defines classes [] and functions []",
+      "hash": "HASH_TODO",
+      "last_updated": "2026-01-27T14:10:31.617551"
+    }
+  },
+  "dependencies": {},
+  "tech_stack": [],
+  "last_scan": null
+}

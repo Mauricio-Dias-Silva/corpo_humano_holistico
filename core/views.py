@@ -155,3 +155,15 @@ def organ_gallery(request):
         })
         
     return render(request, 'organ_gallery.html', {'orgaos': orgaos_list})
+
+def navigator_view(request):
+    """
+    Bio-Navigador Holístico 3D (v2.0).
+    Exibe sistemas e seus metadados holísticos.
+    """
+    # Prefetch related Organs to avoid N+1 queries in the loop
+    sistemas = SistemaCorporal.objects.prefetch_related('orgaos').all()
+    
+    return render(request, 'navigator.html', {
+        'sistemas': sistemas
+    })

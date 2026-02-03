@@ -10,4 +10,7 @@ urlpatterns = [
     path('mapa3d/', views.body_map, name='mapa3d'),
     path('holograma/', views.hologram_view, name='holograma'),
     path('api/pubmed/', views.pubmed_search, name='pubmed_search'),
+    
+    # Bio-Navigator (NOVO w/ Holographic UI)
+    path('navigator/', views.navigator_view, name='navigator'),
 ]

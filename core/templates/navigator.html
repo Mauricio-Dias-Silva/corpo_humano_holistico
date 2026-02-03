@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="holo-container">
+    <!-- Header Holográfico -->
+    <header class="holo-header">
+        <h1>🧬 BIO-NAVIGATOR <span class="version">v2.0</span></h1>
+        <p>Interface de Diagnóstico Holístico Integrado</p>
+    </header>
+
+    <div class="main-grid">
+        <!-- LEFT PANEL: SYSTEMS LIST -->
+        <aside class="holo-panel systems-panel">
+            <h2>Sistemas Corporais</h2>
+            <div class="system-list">
+                {% for sistema in sistemas %}
+                <div class="system-item" onclick="selectSystem('{{ sistema.id }}')">
+                    <span class="sys-icon">⬡</span>
+                    <span class="sys-name">{{ sistema.nome }}</span>
+                    <div class="sys-data" id="data-{{ sistema.id }}" style="display:none;">
+                        <input type="hidden" class="fn-bio" value="{{ sistema.funcao_principal }}">
+                        <input type="hidden" class="fn-color" value="{{ sistema.cor_associada }}">
+                        <div class="sys-organs">
+                            {% for orgao in sistema.orgaos.all %}
+                            <div class="organ-data" data-nome="{{ orgao.nome }}" data-bio="{{ orgao.funcao_biologica }}"
+                                data-emotion="{{ orgao.representacao_emocional }}" data-mtc="{{ orgao.elemento_mtc }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </aside>
+
+        <!-- RIGHT PANEL: HOLISTIC DETAILS -->
+        <main class="holo-panel details-panel">
+            <div id="empty-state">
+                <div class="scanner-line"></div>
+                <h3>Selecione um Sistema para Análise</h3>
+                <p>Aguardando input neural...</p>
+            </div>
+
+            <div id="active-state" style="display: none;">
+                <h2 id="detail-title" class="glow-text">SISTEMA NERVOSO</h2>
+
+                <!-- Biological Section -->
+                <div class="data-section">
+                    <h4>📂 Função Biológica</h4>
+                    <p id="detail-bio">Processamento de dados...</p>
+                </div>
+
+                <!-- Holistic Section -->
+                <div class="data-section holistic">
+                    <h4>✨ Insight Holístico</h4>
+                    <div class="holistic-grid">
+                        <div class="h-card">
+                            <span class="h-label">Cor Associada</span>
+                            <span id="detail-color" class="h-value">--</span>
+                        </div>
+                        <div class="h-card">
+                            <span class="h-label">Órgãos Vitais</span>
+                            <span id="detail-organs-count" class="h-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organs List -->
+                <div class="data-section">
+                    <h4>🫀 Mapeamento de Órgãos & Emoções</h4>
+                    <div id="organs-list" class="organs-grid">
+                        <!-- JS injected cards -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<style>
+    /* --- HOLOGRAPHIC THEME --- */
+    :root {
+        --holo-bg: #050510;
+        --holo-blue: #00f3ff;
+        --holo-purple: #bc13fe;
+        --glass: rgba(20, 30, 50, 0.6);
+        --border-neon: 1px solid rgba(0, 243, 255, 0.3);
+    }
+
+    body {
+        background-color: var(--holo-bg);
+        color: #fff;
+        font-family: 'Courier New', monospace;
+        /* Tech feel */
+        background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #000 100%);
+    }
+
+    .holo-container {
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .holo-header {
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 2px solid var(--holo-purple);
+        padding-bottom: 20px;
+    }
+
+    .holo-header h1 {
+        font-size: 2.5rem;
+        letter-spacing: 5px;
+        text-shadow: 0 0 10px var(--holo-blue);
+    }
+
+    .version {
+        font-size: 0.8rem;
+        background: var(--holo-purple);
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+
+    .main-grid {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 30px;
+        height: 70vh;
+    }
+
+    .holo-panel {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border: var(--border-neon);
+        border-radius: 10px;
+        padding: 20px;
+        overflow-y: auto;
+        box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    }
+
+    /* Systems List */
+    .system-item {
+        padding: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .system-item:hover {
+        background: rgba(0, 243, 255, 0.1);
+        padding-left: 20px;
+        color: var(--holo-blue);
+    }
+
+    .sys-icon {
+        color: var(--holo-purple);
+    }
+
+    /* Right Panel */
+    .glow-text {
+        color: var(--holo-blue);
+        text-shadow: 0 0 10px var(--holo-blue);
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--holo-blue);
+        padding-bottom: 10px;
+    }
+
+    .data-section {
+        margin-bottom: 30px;
+    }
+
+    .data-section h4 {
+        color: #888;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .holistic-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .h-card {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px;
+        border-left: 3px solid var(--holo-purple);
+    }
+
+    .h-label {
+        display: block;
+        font-size: 0.8rem;
+        color: #aaa;
+    }
+
+    .h-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    /* Organs Grid */
+    .organs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .organ-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 6px;
+    }
+
+    .organ-card h5 {
+        color: var(--holo-blue);
+        margin: 0 0 5px 0;
+    }
+
+    .organ-meta {
+        font-size: 0.8rem;
+        color: #ccc;
+        margin-top: 5px;
+    }
+
+    .organ-emotion {
+        color: var(--holo-purple);
+        font-weight: bold;
+    }
+
+    /* Empty State Animation */
+    #empty-state {
+        text-align: center;
+        padding-top: 100px;
+        color: #555;
+    }
+</style>
+
+<script>
+    function selectSystem(systemId) {
+        // 1. UI Feedback
+        document.getElementById('empty-state').style.display = 'none';
+        document.getElementById('active-state').style.display = 'block';
+
+        // 2. Get Data
+        const source = document.getElementById('data-' + systemId);
+        const name = source.closest('.system-item').querySelector('.sys-name').innerText;
+        const bio = source.querySelector('.fn-bio').value;
+        const color = source.querySelector('.fn-color').value;
+
+        // 3. Populate Main Details
+        document.getElementById('detail-title').innerText = name;
+        document.getElementById('detail-bio').innerText = bio || "Dados biológicos não disponíveis.";
+        document.getElementById('detail-color').innerText = color || "Neutro";
+
+        // 4. Populate Organs
+        const organsCtn = document.getElementById('organs-list');
+        organsCtn.innerHTML = ''; // Clear previous
+
+        const organs = source.querySelectorAll('.organ-data');
+        document.getElementById('detail-organs-count').innerText = organs.length;
+
+        organs.forEach(org => {
+            const oName = org.dataset.nome;
+            const oBio = org.dataset.bio;
+            const oEmo = org.dataset.emotion;
+            const oMtc = org.dataset.mtc;
+
+            const card = document.createElement('div');
+            card.className = 'organ-card';
+            card.innerHTML = `
+                <h5>${oName}</h5>
+                <div class="organ-meta">${oBio.substring(0, 50)}...</div>
+                <div class="organ-meta">
+                    <span class="organ-emotion">${oEmo || 'Sem emoção mapeada'}</span>
+                </div>
+                <div class="organ-meta" style="color: #aaa; font-size: 0.7rem;">MTC: ${oMtc || 'N/A'}</div>
+            `;
+            organsCtn.appendChild(card);
+        });
+    }
+</script>
+{% endblock %}
