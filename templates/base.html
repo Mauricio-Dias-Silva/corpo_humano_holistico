@@ -6,57 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Corpo Humano Holístico{% endblock %}</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;500;700&display=swap" rel="stylesheet">
+    <!-- Tipografias: Inter para dados, Cinzel para Títulos Místicos -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Tailwind CSS (via CDN para rapidez) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Ícones Minimalistas (Feather) -->
+    <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- Custom Styles -->
     <style>
+        :root {
+            --bg-dark: #030508;
+            --hud-cyan: #00f5d4;
+            --hud-purple: #9d4edd;
+            --hud-glass: rgba(0, 245, 212, 0.03);
+            --hud-border: rgba(0, 245, 212, 0.15);
+        }
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background: radial-gradient(circle at top left, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: white;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(157, 78, 221, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 245, 212, 0.05), transparent 25%);
+            color: #e2e8f0;
             min-height: 100vh;
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+        /* Títulos principais ganham a fonte serifada milenar */
+        .font-mystic {
+            font-family: 'Cinzel', serif;
         }
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: var(--hud-glass);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            border: 1px solid var(--hud-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
 
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--hud-cyan);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.1);
+            transform: translateY(-2px);
         }
 
         /* Scrollbar customizada */
@@ -82,33 +87,36 @@
 
 <body class="flex flex-col min-h-screen overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="glass-panel sticky top-4 mx-4 mt-4 z-50 p-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 animate-pulse"></div>
-            <a href="/"
-                class="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-200">
-                HOLISTIC ENGINE
+    <!-- Navbar (Sci-Fi HUD Style) -->
+    <nav
+        class="glass-panel sticky top-4 mx-4 mt-4 z-50 p-4 flex justify-between items-center bg-black/50 border-cyan-900/50">
+        <div class="flex items-center space-x-3">
+            <i data-feather="hexagon" class="text-cyan-400 opacity-80 animate-pulse"></i>
+            <a href="/" class="font-mystic text-xl tracking-[0.2em] text-cyan-50">
+                HOLISTIC<span class="text-cyan-500 font-bold">ENGINE</span>
             </a>
         </div>
 
-        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-            <a href="/" class="hover:text-white transition-colors duration-300">Dashboard</a>
-            <a href="/galaxy/" class="text-cyan-300 hover:text-white transition-colors duration-300 animate-pulse">🌌
-                Galáxia Neuronal</a>
-            <a href="/pacientes/diagnostico/" class="text-green-300 hover:text-white transition-colors duration-300">🩺
-                Diagnóstico IA</a>
-            <a href="/mapa3d/" class="text-purple-300 hover:text-white transition-colors duration-300">🧘‍♂️ Mapa 3D</a>
-            <a href="#" class="hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">Scanner
-                Emocional</a>
-            <a href="#" class="hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">IA
-                Mística</a>
+        <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <a href="/" class="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+                <i data-feather="layout" class="w-4 h-4"></i> Dashboard
+            </a>
+            <a href="/galaxy/" class="flex items-center gap-2 hover:text-purple-400 transition-colors duration-300">
+                <i data-feather="share-2" class="w-4 h-4"></i> Rede Neural
+            </a>
+            <a href="/pacientes/diagnostico/"
+                class="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+                <i data-feather="activity" class="w-4 h-4"></i> Diagnóstico IA
+            </a>
+            <a href="/mapa3d/" class="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
+                <i data-feather="box" class="w-4 h-4"></i> Mapa 3D
+            </a>
         </div>
 
         <div class="flex items-center space-x-4">
             <button
-                class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-xs uppercase tracking-widest transition">
-                Login
+                class="border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 px-4 py-2 rounded text-xs uppercase tracking-widest transition">
+                <i data-feather="user" class="inline w-3 h-3 mb-1 mr-1"></i> Acesso
             </button>
         </div>
     </nav>
@@ -129,9 +137,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="mt-12 p-8 text-center text-white/40 text-xs">
-        <p>&copy; 2025 Projeto Corpo Humano Holístico. Powered by AI & Ancient Wisdom.</p>
+    <footer class="mt-12 p-8 text-center text-gray-600 text-xs font-mono">
+        <p>&copy; 2025 HYBRID BIOLOGY INSTITUTE • CLINICAL AI ENGINE v5.0</p>
     </footer>
+
+    <!-- Init Feather Icons -->
+    <script>
+        feather.replace();
+    </script>
 
     {% block extra_scripts %}{% endblock %}
 </body>
