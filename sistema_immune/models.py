@@ -5,6 +5,9 @@ class Estrutura(models.Model):
     nome = models.CharField(max_length=100)
     orgao_relacionado = models.ForeignKey(Orgao, on_delete=models.SET_NULL, null=True, blank=True, related_name='estrutura_immune')
     funcao = models.TextField(blank=True, null=True)
+    
+    # Aura Bio-Nexus Integration
+    resonance_receptors = models.JSONField(null=True, blank=True) # Mapeamento de afinidade por composto
 
     def __str__(self):
         return self.nome
