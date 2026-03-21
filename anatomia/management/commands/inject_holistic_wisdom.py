@@ -5,15 +5,15 @@ from django.core.management.base import BaseCommand
 from anatomia.models import Orgao
 
 class Command(BaseCommand):
-    help = 'HEALER-BOT: Enriquece dados médicos com sabedoria holística (PsicoCodex).'
+    help = 'HEALER-BOT: Enriquece dados médicos com sabedoria holística (PsicoOmni).'
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS('🏥 INICIANDO PROTOCOLO DE CURA (Codex -> Holístico)...'))
+        self.stdout.write(self.style.SUCCESS('🏥 INICIANDO PROTOCOLO DE CURA (Omni -> Holístico)...'))
 
-        CODEX_MEMORY_PATH = r"c:\Users\Mauricio\Desktop\codex-IA\.codex_memory"
+        OMNI_MEMORY_PATH = r"c:\Users\Mauricio\Desktop\codex-IA\.omni_memory"
         
         try:
-            client = chromadb.PersistentClient(path=CODEX_MEMORY_PATH)
+            client = chromadb.PersistentClient(path=OMNI_MEMORY_PATH)
             collection = client.get_collection("project_codebase")
         except:
             return

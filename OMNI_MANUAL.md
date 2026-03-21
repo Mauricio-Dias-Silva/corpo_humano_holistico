@@ -1,2 +1,2 @@
-# Bem-vindo ao Codex-IA 2.0
+# Bem-vindo ao Omni-IA 2.0
 # O Cérebro PythonJet está Ativo.

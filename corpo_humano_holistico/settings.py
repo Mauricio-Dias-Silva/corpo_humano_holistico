@@ -14,6 +14,12 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.run.app',
+    'https://*.auracloud.com.br',
+    'https://corpo-humano.auracloud.com.br'
+]
+
 # Aplicações Instaladas (Ordem Correta)
 INSTALLED_APPS = [
     # Nossos Apps

@@ -15,7 +15,7 @@ class Command(BaseCommand):
     help = 'Usa IA (Gemini 2.5 Pro) para popular o banco com relacionamentos holísticos profundos'
 
     def handle(self, *args, **kwargs):
-        self.stdout.write("🧠 Conectando ao Codex Brain (Gemini 2.5 Pro)...")
+        self.stdout.write("🧠 Conectando ao Omni Brain (Gemini 2.5 Pro)...")
         
         # Limpeza
         self.stdout.write("🧹 Limpando dados antigos para nova injeção...")
